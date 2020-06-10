@@ -1,0 +1,8 @@
+#Add Your Configuration Details
+
+
+#add single zero-tier api key
+API_KEY=
+
+#add network ids seperated by a single space
+NETWORK_IDs=

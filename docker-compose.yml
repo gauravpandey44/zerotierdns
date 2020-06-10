@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  dns:
+    build:
+      context: .
+    restart: always
+    volumes:
+      - ./.config:/.config
+      - ./dnsmasq.d/:/etc/dnsmasq.d/
+    ports:
+      - 53:53/udp
+    

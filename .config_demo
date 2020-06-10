@@ -1,5 +1,8 @@
 #Add Your Configuration Details
 
+#add dns refresh rate in seconds
+REFRESH=60
+
 
 #add single zero-tier api key
 API_KEY=

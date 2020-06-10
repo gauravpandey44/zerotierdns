@@ -1,3 +1,4 @@
 .config
 dnsmasq.d
+hosts.d
 .ipynb_checkpoints

@@ -2,10 +2,14 @@ version: "3.7"
 services:
   dns:
     image: gauravpandey44/zerotierdns
+    # build:
+      # context: .
     restart: always
     volumes:
       - ./.config:/.config
       - ./dnsmasq.d/:/etc/dnsmasq.d/
+      - ./hosts.d/:/etc/hosts.d/
+      - /etc/hosts:/etc/hosts.d/hosts
     ports:
       - 53:53/udp
     

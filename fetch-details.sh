@@ -4,13 +4,14 @@ while [ 1 ] # infine loop with a sleep
 do
 
         #Script to fetch zerotier details using zerotier api
-
+        mkdir -p /etc/hosts.d
         API_KEY=`grep API_KEY ./.config  | cut -d "=" -f2`
         conf_file='/etc/dnsmasq.d/10_zero.conf'
+        etc_hosts=/etc/hosts.d/zero.hst
         REFRESH=`grep REFRESH ./.config  | cut -d "=" -f2`
         echo "log-queries" > $conf_file
         echo "no-resolv" >> $conf_file
-
+        echo -n "" >$etc_hosts
 
         for nid in `grep NETWORK_IDs ./.config  | cut -d "=" -f2`  #this loop will feth the details for all network ids defined
         do
@@ -34,7 +35,7 @@ do
                 for ip in `echo $ips | sed 's/,/ /g'`
                 do
 
-                   echo  address=/$name.zt/$ip  | tee -a  $conf_file
+                   echo   $ip $name.zt  | tee -a  $etc_hosts
 
                 done 
 
@@ -49,9 +50,10 @@ do
          echo "server=213.136.95.11" >> $conf_file
         if [ `ps eux | grep dnsmasq | grep -v grep |wc -l` -lt 1 ]
         then
-            dnsmasq
+            dnsmasq --hostsdir=/etc/hosts.d
         fi
         sleep $REFRESH
+        kill -s SIGHUP dnsmasq
         
        
 done

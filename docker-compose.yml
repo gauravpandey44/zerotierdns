@@ -1,8 +1,7 @@
 version: "3.7"
 services:
   dns:
-    build:
-      context: .
+    image: gauravpandey44/zerotierdns
     restart: always
     volumes:
       - ./.config:/.config

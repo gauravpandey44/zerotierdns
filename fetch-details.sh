@@ -53,7 +53,7 @@ do
             dnsmasq --hostsdir=/etc/hosts.d
         fi
         sleep $REFRESH
-        kill -s SIGHUP dnsmasq
+        kill -s SIGHUP `ps -ef | grep dnsmasq | grep -v grep | awk '{print $1}'`
         
        
 done

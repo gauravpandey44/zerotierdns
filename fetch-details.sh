@@ -6,7 +6,7 @@ do
         #Script to fetch zerotier details using zerotier api
 
         API_KEY=`grep API_KEY ./.config  | cut -d "=" -f2`
-        conf_file='/etc/dnsmasq.d/zero.conf'
+        conf_file='/etc/dnsmasq.d/10_zero.conf'
         REFRESH=`grep REFRESH ./.config  | cut -d "=" -f2`
 $REFRESH
         echo "log-queries" > $conf_file

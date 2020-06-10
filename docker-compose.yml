@@ -9,7 +9,7 @@ services:
       - ./.config:/.config
       - ./dnsmasq.d/:/etc/dnsmasq.d/
       - ./hosts.d/:/etc/hosts.d/
-      - /etc/hosts:/etc/hosts.d/hosts
+      - /etc/hosts:/etc/hosts
     ports:
       - 53:53/udp
     
